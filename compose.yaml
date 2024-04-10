@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  docker-github-repo-puller:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "$PROJECTS_PATH:$PROJECTS_PATH"
+    environment:
+      - CRON_SCHEDULE=0 14 * * *
+      - PROJECTS_PATH=C:\Users\Power\Projects
+      - GITHUB_TOKEN=xxx
+      - GITHUB_USERNAME=linyuxuanlin
+      # HTTP_PROXY 和 HTTPS_PROXY 是可选的，如果不设置则留空
+      - HTTP_PROXY=socks5://192.168.xx.xx:7891
+      - HTTPS_PROXY=socks5://192.168.xx.xx:7891
